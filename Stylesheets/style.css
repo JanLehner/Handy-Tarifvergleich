@@ -50,3 +50,65 @@ footer {
     color: var(--font-dark);
     font-size: 20px;
 }
+
+form {
+    margin: 40px 20%;
+    color: black;
+}
+
+form * {
+    margin: 20px 0;
+}
+
+.slider {
+    background-color: lightgray;
+    appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgb(0, 128, 255);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#submit {
+    display: block;
+    margin: 0 auto;
+    padding: 20px 35px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+#submit:hover {
+    background-color: rgb(244, 244, 244);
+}
+
+.radio-label {
+    margin-right: 20px;
+}
+
+datalist {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+  
+option {
+    margin: 0;
+    padding: 0;
+    width: 19.2px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    form {
+        margin: 40px 10px;
+    }
+}
