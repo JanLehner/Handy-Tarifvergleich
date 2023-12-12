@@ -1,0 +1,52 @@
+:root {
+    --dark-background: #1a486b;
+    --light-background: #225d8b;
+    --font-light: #2dbf54;
+    --font-dark: #24a145;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px auto 80px;
+    grid-template-areas:
+        'header header header'
+        'main main main'
+        'footer footer footer';
+    height: 100%;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    grid-area: header;
+    background-color: var(--dark-background);
+    color: var(--font-dark);
+    font-size: 35px;
+
+}
+
+main {
+    grid-area: main;
+    background-color: var(--light-background);
+    color: var(--font-light);
+}
+
+footer {
+    grid-area: footer;
+    background-color: var(--dark-background);
+    color: var(--font-dark);
+    font-size: 20px;
+}
