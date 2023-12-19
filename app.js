@@ -10,7 +10,7 @@ const main = document.querySelector("main");
 const routes = {
   form: { hash: '#form', function: loadForm},
   login: { hash: '#login', function: loadLogin},
-  register: { hash: '#login', function: loadRegister},
+  register: { hash: '#register', function: loadRegister},
   user: { hash: '#user', function: loadUser},
   admin: { hash: '#admin', function: loadAdmin},
   error: { function: renderNotFound },
