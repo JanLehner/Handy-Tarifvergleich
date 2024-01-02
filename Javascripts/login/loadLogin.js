@@ -13,5 +13,7 @@ const login = `<div class="flexbox mainHeader">
 <input id="inputUsername" class="inputLogin" type="text" placeholder="Benuztername">
 <input id="inputPassword" class="inputLogin" type="password" placeholder="Passwort">
 <p class="errorMessage">Benutzername oder Passwort falsch.</p>
-<a class="flexbox btn" id="btnLogin">Login</a>
+<div class="flexbox loginBtnDiv">
+    <a class="flexbox btn" id="btnLogin">Login</a>
+</div>
 </div>`;
