@@ -29,6 +29,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
+}
+
+h1{
+    text-align: center;
+}
+
+.notFound{
+    text-decoration: none;
+    border-radius: 0.5em;
+    padding: 3%;
+}
+
+.notFound:hover{
+    padding: 4%;
 }
 
 header {
