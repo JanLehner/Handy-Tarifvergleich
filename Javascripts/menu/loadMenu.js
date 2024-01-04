@@ -5,7 +5,10 @@ export function loadMenu() {
 
 const styleHolder = document.getElementById("styleHolder");
 const main = document.querySelector('main');
-const menu = `<div class="flexbox infoMenuDiv">
+const menu = `<div class="flexbox mainHeader">
+<a class="flexbox btn logoutBtn">Logout</a>
+</div>
+<div class="flexbox infoMenuDiv">
 <p class="flexbox infoMenuTitle">Willkommen Benutzer.</p>
 <p class="flexbox infoMenuDescr">Was würden Sie gerne machen?</p>
 </div>

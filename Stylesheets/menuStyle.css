@@ -1,3 +1,24 @@
+.mainHeader{
+    height: 10%;
+    width: 100%;
+    justify-content: right;
+}
+
+.logoutBtn{
+    height: 80%;
+    width: 8%;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 0.5em;
+    transition: 0.5s
+}
+
+.logoutBtn:hover{
+    height: 85%;
+    width: 9%;
+    font-size: 25px;
+}
+
 .infoMenuDiv{
     height: 20%;
     width: 100%;
@@ -84,6 +105,18 @@
         width: 90%;
         cursor: pointer;
     }
+
+    .logoutBtn{
+        height: 80%;
+        width: 17%;
+        font-size: 19px;
+    }
+    
+    .logoutBtn:hover{
+        height: 85%;
+        width: 19%;
+        font-size: 23px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -99,4 +132,15 @@
         font-size: 20px;
     }
     
+    .logoutBtn{
+        height: 70%;
+        width: 27%;
+        font-size: 19px;
+    }
+    
+    .logoutBtn:hover{
+        height: 75%;
+        width: 30%;
+        font-size: 23px;
+    }
 }
