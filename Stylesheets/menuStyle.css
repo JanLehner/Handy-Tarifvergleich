@@ -61,7 +61,7 @@
 }
 
 .actionTitle{
-    height: 20%;
+    height: 30%;
     width: 100%;
     border-top-right-radius: 0.5em;
     border-top-left-radius: 0.5em;
@@ -72,7 +72,7 @@
 }
 
 .actionDescr{
-    height: 85%;
+    height: 70%;
     width: 100%;
     border-bottom-right-radius: 0.5em;
     border-bottom-left-radius: 0.5em;
