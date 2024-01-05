@@ -81,6 +81,8 @@ svg{
     width: 100%;
     flex-direction: column;
     background-color: var(--grey);
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
 }
 
 .offerCardText{
