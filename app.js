@@ -6,6 +6,7 @@ import { loadMenu } from "./Javascripts/menu/loadMenu.js";
 import {loadResult } from "./Javascripts/result/loadResult.js"
 import { loadOffer } from "./Javascripts/offer/loadOffer.js";
 import { loadDetailView } from "./Javascripts/detailView/loadDetailView.js";
+import { loadLoading } from "./Javascripts/loading/loadLoading.js";
 
 const main = document.querySelector("main");
 
@@ -17,6 +18,7 @@ const routes = {
   result: { hash: '#result', function: loadResult},
   offer: { hash: '#offer', function: loadOffer},
   detail: { hash: '#detail', function: loadDetailView},
+  loading: { hash: '#loading', function: loadLoading},
   error: { function: renderNotFound },
 };
 let router = new Router(routes);

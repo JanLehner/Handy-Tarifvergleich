@@ -5,6 +5,7 @@ export function loadLogin() {
 
 const styleHolder = document.getElementById("styleHolder");
 const main = document.querySelector('main');
+
 const login = `<div class="flexbox mainHeader">
 <a id="switchToRegister" href="#register">Neu hier? Registrieren Sie sich.</a>
 </div>
