@@ -1,6 +1,12 @@
+import { checkIfUserIsLoggedIn } from "../functions/generalFunctions.js";
+
 export function loadLogin() {
-    styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`;
-    main.innerHTML = login;
+    if (checkIfUserIsLoggedIn()) {
+        console.log("eingelogt");
+    } else {
+        styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`;
+        main.innerHTML = login;
+    }
 };
 
 const styleHolder = document.getElementById("styleHolder");
