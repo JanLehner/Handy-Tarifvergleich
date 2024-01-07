@@ -16,7 +16,7 @@ export async function loadMenu() {
   document
     .querySelector('#determineSubButton')
     .addEventListener('click', () => {
-      window.location.hash = '#loading'
+      window.location.hash = '#result'
     })
 
   const isAdmin = await isUserAdmin()
