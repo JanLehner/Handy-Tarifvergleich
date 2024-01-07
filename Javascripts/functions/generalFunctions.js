@@ -1,4 +1,4 @@
-const API_URL = `https://localhost:7256`
+const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
 let tokenValid = false
 
 export async function checkIfUserIsLoggedIn() {
