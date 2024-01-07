@@ -20,8 +20,6 @@ export async function loadMenu() {
     })
 
   const isAdmin = await isUserAdmin()
-  console.log(isAdmin)
-  console.log(sessionStorage.getItem('token'))
 
   if (isAdmin) {
     const actionCardDiv = document.createElement('div')
