@@ -16,7 +16,7 @@ const register = `<div class="flexbox mainHeader">
 <input id="inputUsername" class="inputLogin" type="text" placeholder="Benuztername">
 <input id="inputPassword" class="inputLogin" type="password" placeholder="Passwort">
 <input id="inputPasswordReenter" class="inputLogin" type="password" placeholder="Passwort-Bestätigung">
-<p class="errorMessage">Benutzername oder Passwort falsch.</p>
+<p class="errorMessage">Passwörter stimmen nicht überein</p>
 <div class="flexbox loginBtnDiv">
     <a class="flexbox btn" id="btnLogin">Registrieren</a>
 </div>
@@ -27,9 +27,10 @@ async function registerUser() {
   const password = document.getElementById('inputPassword').value
   const passwordReenter = document.getElementById('inputPasswordReenter').value
   if (password != passwordReenter) {
-    document.querySelector('.errorMessage').innerHTML =
-      'Passwörter stimmen nicht überein.'
+    document.querySelector('.errorMessage').style.display = 'block'
     return
+  } else {
+    document.querySelector('.errorMessage').style.display = 'none'
   }
   const registerURL = API_URL + '/register'
   try {

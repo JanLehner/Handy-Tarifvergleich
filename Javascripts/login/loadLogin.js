@@ -23,7 +23,7 @@ const login = `<div class="flexbox mainHeader">
 <div class="flexbox inputDivLogin">
 <input id="inputUsername" class="inputLogin" type="text" placeholder="Benuztername">
 <input id="inputPassword" class="inputLogin" type="password" placeholder="Passwort">
-<p class="errorMessage">Benutzername oder Passwort falsch.</p>
+<p class="errorMessage">Benutzername oder Passwort falsch</p>
 <div class="flexbox loginBtnDiv">
     <a class="flexbox btn" id="btnLogin">Login</a>
 </div>
@@ -45,18 +45,14 @@ async function loginUser() {
         password: password,
       }),
     })
-
-    if (!response.ok) {
-      throw new Error('Could not log in (HTTP error)')
-    }
-
     const data = await response.text()
 
     if (response.status === 200) {
+      document.querySelector('.errorMessage').style.display = 'none'
       sessionStorage.setItem('token', data)
       window.location.hash = '#menu'
     } else {
-      console.log('Login error:', data)
+      document.querySelector('.errorMessage').style.display = 'block'
     }
   } catch (err) {
     console.error(err)

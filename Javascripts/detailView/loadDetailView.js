@@ -107,7 +107,6 @@ async function getOfferData(offerId) {
       const inputFields = document.querySelectorAll('.infoInput')
       const numberFields = document.querySelectorAll('.number')
 
-      // only allow numbers and one dot
       numberFields.forEach((field) => {
         field.addEventListener('input', () => {
           field.value = field.value
