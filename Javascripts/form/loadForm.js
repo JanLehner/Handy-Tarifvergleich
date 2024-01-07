@@ -306,9 +306,6 @@ const form = `<div class="flexbox mainHeader">
 </div>
 </div>
 <div class="flexbox saveBtnDiv">
-<p class="errorMessage">Füllen Sie alle Felder aus.</p>
-</div>
-<div class="flexbox saveBtnDiv">
 <a class="flexbox btn saveBtn">Speichern</a>
 </div>`
 
