@@ -104,7 +104,6 @@ async function getOfferData(offerId) {
       <a class="flexbox btn saveBtn">Speichern</a>
       </div>`
 
-      // check if fields are empty
       const inputFields = document.querySelectorAll('.infoInput')
       const errorMessageContainer = document.querySelector(
         '#errorMessageContainer'
