@@ -99,19 +99,40 @@ async function getOfferData(offerId) {
           <input class="flexbox infoInput" id="activationFee" type="number" value="${data.activationFee}" placeholder="decimal">
       </div>
       </div>
-      <div class="flexbox saveBtnDiv">
-      <p class="errorMessage" hidden>Füllen Sie alle Felder aus.</p>
-      </div>
+      <div class="flexbox saveBtnDiv" id="errorMessageContainer"></div>
       <div class="flexbox saveBtnDiv">
       <a class="flexbox btn saveBtn">Speichern</a>
       </div>`
+
+      // check if fields are empty
+      const inputFields = document.querySelectorAll('.infoInput')
+      const errorMessageContainer = document.querySelector(
+        '#errorMessageContainer'
+      )
+      const errorMessage = document.createElement('p')
+      errorMessage.classList.add('errorMessage')
+      errorMessage.textContent = 'Bitte füllen Sie alle Felder aus.'
+      errorMessageContainer.appendChild(errorMessage)
+      document.querySelector('.saveBtn').addEventListener('click', () => {
+        let emptyFields = false
+        inputFields.forEach((field) => {
+          if (field.value === '') {
+            emptyFields = true
+          }
+        })
+        if (emptyFields) {
+          errorMessageContainer.style.display = 'flex'
+        } else {
+          errorMessageContainer.style.display = 'none'
+          saveOfferData(offerId)
+        }
+      })
+
       document.querySelector('.cancelBtn').addEventListener('click', () => {
         main.innerHTML = ''
         window.location.hash = '#offer'
       })
-      document.querySelector('.saveBtn').addEventListener('click', () => {
-        saveOfferData(offerId)
-      })
+
       document.querySelector('#worldOffer').checked = data.worldOffer
     })
 }
@@ -122,7 +143,7 @@ async function saveOfferData(offerId) {
   const provider = document.getElementById('provider').value
   const offerUrl = document.getElementById('offerUrl').value
   const basePrice = document.getElementById('basePrice').value
-  const worldOffer = document.getElementById('worldOffer').value
+  const worldOffer = document.getElementById('worldOffer').checked
   const callPerCallminuteCH = document.getElementById(
     'callPerCallminuteCH'
   ).value
