@@ -40,7 +40,7 @@ async function getOfferData(offerId) {
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Grundpreis:</p>
-          <input class="flexbox infoInput" id="basePrice" type="number" value="${data.basePrice}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="basePrice" value="${data.basePrice}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Welt:</p>
@@ -48,55 +48,55 @@ async function getOfferData(offerId) {
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Telefonkosten CH (min):</p>
-          <input class="flexbox infoInput" id="callPerCallminuteCH" type="number" value="${data.cost.callPerCallminuteCH}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="callPerCallminuteCH" value="${data.cost.callPerCallminuteCH}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Gigabytekosten CH:</p>
-          <input class="flexbox infoInput" id="internetPerGBCH" type="number" value="${data.cost.internetPerGBCH}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="internetPerGBCH" value="${data.cost.internetPerGBCH}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">SMS-Kosten CH:</p>
-          <input class="flexbox infoInput" id="smsPerCountCH" type="number" value="${data.cost.smsPerCountCH}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="smsPerCountCH" value="${data.cost.smsPerCountCH}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Telefonkosten EU (min):</p>
-          <input class="flexbox infoInput" id="callPerCallminuteEurope" type="number" value="${data.cost.callPerCallminuteEurope}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="callPerCallminuteEurope" value="${data.cost.callPerCallminuteEurope}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Gigabytekosten EU:</p>
-          <input class="flexbox infoInput" id="internetPerGBEurope" type="number" value="${data.cost.internetPerGBEurope}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="internetPerGBEurope" value="${data.cost.internetPerGBEurope}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">SMS-Kosten EU:</p>
-          <input class="flexbox infoInput" id="smsPerCountEurope" type="number" value="${data.cost.smsPerCountEurope}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="smsPerCountEurope" value="${data.cost.smsPerCountEurope}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Telefonguthaben CH (min):</p>
-          <input class="flexbox infoInput" id="freeGBInternetCH" type="number" value="${data.deductions.freeGBInternetCH}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="freeGBInternetCH" value="${data.deductions.freeGBInternetCH}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Gigabyteguthaben CH:</p>
-          <input class="flexbox infoInput" id="freeCallminutesCH" type="number" value="${data.deductions.freeCallminutesCH}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="freeCallminutesCH" value="${data.deductions.freeCallminutesCH}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">SMS-Guthaben CH:</p>
-          <input class="flexbox infoInput" id="freeSMSCH" type="number" value="${data.deductions.freeSMSCH}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="freeSMSCH" value="${data.deductions.freeSMSCH}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Telefonguthaben EU (min):</p>
-          <input class="flexbox infoInput" id="freeGBInternetEurope" type="number" value="${data.deductions.freeGBInternetEurope}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="freeGBInternetEurope" value="${data.deductions.freeGBInternetEurope}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Gigabyteguthaben EU:</p>
-          <input class="flexbox infoInput" id="freeCallminutesEurope" type="number" value="${data.deductions.freeCallminutesEurope}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="freeCallminutesEurope" value="${data.deductions.freeCallminutesEurope}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">SMS-Guthaben EU:</p>
-          <input class="flexbox infoInput" id="freeSMSEurope" type="number" value="${data.deductions.freeSMSEurope}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="freeSMSEurope" value="${data.deductions.freeSMSEurope}" placeholder="decimal">
       </div>
       <div class="flexbox infoCard">
           <p class="flexbox infoTitle">Aktivierungsgebühr:</p>
-          <input class="flexbox infoInput" id="activationFee" type="number" value="${data.activationFee}" placeholder="decimal">
+          <input class="flexbox infoInput number" id="activationFee" value="${data.activationFee}" placeholder="decimal">
       </div>
       </div>
       <div class="flexbox saveBtnDiv" id="errorMessageContainer"></div>
@@ -105,6 +105,17 @@ async function getOfferData(offerId) {
       </div>`
 
       const inputFields = document.querySelectorAll('.infoInput')
+      const numberFields = document.querySelectorAll('.number')
+
+      // only allow numbers and one dot
+      numberFields.forEach((field) => {
+        field.addEventListener('input', () => {
+          field.value = field.value
+            .replace(/[^0-9.]/g, '')
+            .replace(/(\..*)\./g, '$1')
+        })
+      })
+
       const errorMessageContainer = document.querySelector(
         '#errorMessageContainer'
       )
@@ -123,6 +134,9 @@ async function getOfferData(offerId) {
           errorMessageContainer.style.display = 'flex'
         } else {
           errorMessageContainer.style.display = 'none'
+          numberFields.forEach((field) => {
+            field.value = Math.round(field.value * 20) / 20
+          })
           saveOfferData(offerId)
         }
       })
