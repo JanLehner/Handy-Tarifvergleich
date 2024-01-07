@@ -10,6 +10,16 @@ export async function loadLogin() {
     styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`
     main.innerHTML = login
     document.querySelector('#btnLogin').addEventListener('click', loginUser)
+    document
+      .querySelector('#inputUsername')
+      .addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
+      })
+    document
+      .querySelector('#inputPassword')
+      .addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') loginUser()
+      })
   }
 }
 

@@ -4,6 +4,18 @@ export function loadRegister() {
   styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`
   main.innerHTML = register
   document.querySelector('#btnLogin').addEventListener('click', registerUser)
+  document.querySelector('#inputUsername').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
+  })
+  document.querySelector('#inputPassword').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter')
+      document.querySelector('#inputPasswordReenter').focus()
+  })
+  document
+    .querySelector('#inputPasswordReenter')
+    .addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') registerUser()
+    })
 }
 
 const styleHolder = document.getElementById('styleHolder')
