@@ -35,3 +35,20 @@ export async function isTokenValid() {
     return false
   }
 }
+
+export async function isUserAdmin() {
+  try {
+    const checkTokenURL = API_URL + '/users/isAdmin'
+    const response = await fetch(`${checkTokenURL}`, {
+      method: 'GET',
+      headers: {
+        Accept: '*/*',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    if (response.status === 200) return true
+    else return false
+  } catch (error) {
+    return false
+  }
+}
