@@ -1,10 +1,10 @@
 export function loadRegister() {
-    styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`;
-    main.innerHTML = register;
-};
+  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`
+  main.innerHTML = register
+}
 
-const styleHolder = document.getElementById("styleHolder");
-const main = document.querySelector('main');
+const styleHolder = document.getElementById('styleHolder')
+const main = document.querySelector('main')
 const register = `<div class="flexbox mainHeader">
 <a id="switchToRegister" href="#login">Bereits registriert? Loggen Sie sich ein.</a>
 </div>
@@ -17,4 +17,4 @@ const register = `<div class="flexbox mainHeader">
 <div class="flexbox loginBtnDiv">
     <a class="flexbox btn" id="btnLogin">Registrieren</a>
 </div>
-</div>`;
+</div>`

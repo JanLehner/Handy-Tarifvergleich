@@ -1,16 +1,17 @@
-import { checkIfUserIsLoggedIn } from "../functions/generalFunctions.js";
+import { checkIfUserIsLoggedIn } from '../functions/generalFunctions.js'
 
-export function loadLogin() {
-    if (checkIfUserIsLoggedIn()) {
-        console.log("eingelogt");
-    } else {
-        styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`;
-        main.innerHTML = login;
-    }
-};
+export async function loadLogin() {
+  const isUserLoggedIn = await checkIfUserIsLoggedIn()
+  if (isUserLoggedIn) {
+    console.log('eingeloggt')
+  } else {
+    styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`
+    main.innerHTML = login
+  }
+}
 
-const styleHolder = document.getElementById("styleHolder");
-const main = document.querySelector('main');
+const styleHolder = document.getElementById('styleHolder')
+const main = document.querySelector('main')
 
 const login = `<div class="flexbox mainHeader">
 <a id="switchToRegister" href="#register">Neu hier? Registrieren Sie sich.</a>
@@ -23,4 +24,4 @@ const login = `<div class="flexbox mainHeader">
 <div class="flexbox loginBtnDiv">
     <a class="flexbox btn" id="btnLogin">Login</a>
 </div>
-</div>`;
+</div>`
