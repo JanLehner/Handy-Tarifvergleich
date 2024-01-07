@@ -1,9 +1,23 @@
-import { isUserAdmin } from '../functions/generalFunctions.js'
+import {
+  isUserAdmin,
+  checkIfUserIsLoggedIn,
+} from '../functions/generalFunctions.js'
 
 export async function loadMenu() {
+  const isUserLoggedIn = await checkIfUserIsLoggedIn()
+  if (!isUserLoggedIn) return (window.location.hash = '#login')
+
   styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/menuStyle.css"></link>`
   main.innerHTML = menu
   document.querySelector('.logoutBtn').addEventListener('click', logout)
+  document.querySelector('#editProfileButton').addEventListener('click', () => {
+    window.location.hash = '#form'
+  })
+  document
+    .querySelector('#determineSubButton')
+    .addEventListener('click', () => {
+      window.location.hash = '#loading'
+    })
 
   const isAdmin = await isUserAdmin()
   console.log(isAdmin)
@@ -13,14 +27,20 @@ export async function loadMenu() {
     const actionCardDiv = document.createElement('div')
     actionCardDiv.className = 'flexbox actionCardDiv'
     actionCardDiv.innerHTML = `
-      <div class="flexbox actionTitle">Angebote bearbeiten</div>
+      <a id="editOffersButton"><div class="flexbox actionTitle">Angebote bearbeiten</div>
       <div class="flexbox actionDescr">
         <p class="flexbox actionDescrText">Bearbeiten Sie die Angebotsauswahl für die Berechnung der Empfehlung.</p>
-      </div>
+      </div></a>
     `
 
     const actionsDiv = document.querySelector('.actionsDiv')
-    actionsDiv.insertAdjacentElement('afterbegin', actionCardDiv) // Insert as first child
+    actionsDiv.insertAdjacentElement('afterbegin', actionCardDiv)
+
+    document
+      .querySelector('#editOffersButton')
+      .addEventListener('click', () => {
+        window.location.hash = '#offer'
+      })
   }
 }
 
@@ -35,16 +55,20 @@ const menu = `<div class="flexbox mainHeader">
 </div>
 <div class="flexbox actionsDiv">
 <div class="flexbox actionCardDiv">
+<a id="editProfileButton">
     <div class="flexbox actionTitle">Nutzungsprofil bearbeiten</div>
     <div class="flexbox actionDescr">
         <p class="flexbox actionDescrText">Aktualisieren Sie Ihr Nutzungsprofil auf Ihre aktuellenBedürfnisse.</p>
     </div>
+</a>
 </div>
 <div class="flexbox actionCardDiv">
+<a id="determineSubButton">
     <div class="flexbox actionTitle">Abonnement bestimmen</div>
     <div class="flexbox actionDescr">
         <p class="flexbox actionDescrText">Finden Sie die drei günstigsten Abonnements für Ihr Nutzverhalten.</p>
     </div>
+</a>
 </div>
 </div>`
 

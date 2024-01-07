@@ -1,4 +1,4 @@
-const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
+const API_URL = `https://localhost:7256`
 let tokenValid = false
 
 export async function checkIfUserIsLoggedIn() {
@@ -25,7 +25,8 @@ export async function isTokenValid() {
         Authorization: `Bearer ${token}`,
       },
     })
-    if (response.status === 200) return true
+    const data = await response.text()
+    if (data === 'true') return true
     else return false
   } catch (error) {
     return false
@@ -34,7 +35,6 @@ export async function isTokenValid() {
 
 export async function isUserAdmin() {
   let token = sessionStorage.getItem('token')
-  console.log(token)
   try {
     const checkTokenURL = API_URL + '/users/isAdmin'
     const response = await fetch(`${checkTokenURL}`, {
