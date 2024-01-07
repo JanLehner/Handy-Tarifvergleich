@@ -3,6 +3,7 @@ const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
 export function loadRegister() {
   styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`
   main.innerHTML = register
+  errorMessage = document.querySelector('.errorMessage')
   document.querySelector('#btnLogin').addEventListener('click', registerUser)
   document.querySelector('#inputUsername').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
@@ -18,6 +19,7 @@ export function loadRegister() {
     })
 }
 
+let errorMessage
 const styleHolder = document.getElementById('styleHolder')
 const main = document.querySelector('main')
 const register = `<div class="flexbox mainHeader">
@@ -39,10 +41,11 @@ async function registerUser() {
   const password = document.getElementById('inputPassword').value
   const passwordReenter = document.getElementById('inputPasswordReenter').value
   if (password != passwordReenter) {
-    document.querySelector('.errorMessage').style.display = 'block'
+    errorMessage.innerHTML = 'Passwörter stimmen nicht überein'
+    errorMessage.style.display = 'block'
     return
   } else {
-    document.querySelector('.errorMessage').style.display = 'none'
+    errorMessage.style.display = 'none'
   }
   const registerURL = API_URL + '/register'
   try {
@@ -58,15 +61,14 @@ async function registerUser() {
       }),
     })
 
-    if (!response.ok) {
-      throw new Error('Could not register (HTTP error)')
-    }
-
     const data = await response.text()
 
     if (response.status === 200) {
       sessionStorage.setItem('token', data)
       window.location.hash = '#menu'
+    } else if (response.status === 400) {
+      errorMessage.innerHTML = 'Benutzername bereits vergeben'
+      errorMessage.style.display = 'block'
     } else {
       console.log('Registration error:', data)
     }
