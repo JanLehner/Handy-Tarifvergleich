@@ -5,7 +5,6 @@ const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
 export async function loadLogin() {
   const isUserLoggedIn = await checkIfUserIsLoggedIn()
   if (isUserLoggedIn) {
-    console.log('eingeloggt')
     window.location.hash = '#menu'
   } else {
     styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`

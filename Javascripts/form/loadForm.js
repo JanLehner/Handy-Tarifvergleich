@@ -1,13 +1,16 @@
 export function loadForm() {
-  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/formStyle.css"></link>`;
-  main.innerHTML = form;
+  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/formStyle.css"></link>`
+  main.innerHTML = form
+  document.querySelector('.cancelBtn').addEventListener('click', () => {
+    window.location.hash = '#menu'
+  })
 }
 
-const styleHolder = document.getElementById("styleHolder");
-const main = document.querySelector('main');
+const styleHolder = document.getElementById('styleHolder')
+const main = document.querySelector('main')
 
 const form = `<div class="flexbox mainHeader">
-<a class="flexbox btn logoutBtn">Logout</a>
+<a class="flexbox btn cancelBtn">Cancel</a>
 </div>
 <p class="flexbox formTitle">Form</p>
 <div class="flexbox formQuestionDiv">
@@ -191,4 +194,4 @@ const form = `<div class="flexbox mainHeader">
 </div>
 <div class="flexbox saveBtnDiv">
 <a class="flexbox btn saveBtn">Speichern</a>
-</div>`;
+</div>`
