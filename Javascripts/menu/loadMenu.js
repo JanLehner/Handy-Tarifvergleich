@@ -56,7 +56,7 @@ const menu = `<div class="flexbox mainHeader">
 <a id="editProfileButton">
     <div class="flexbox actionTitle">Nutzungsprofil bearbeiten</div>
     <div class="flexbox actionDescr">
-        <p class="flexbox actionDescrText">Aktualisieren Sie Ihr Nutzungsprofil auf Ihre aktuellenBedürfnisse.</p>
+        <p class="flexbox actionDescrText">Aktualisieren Sie Ihr Nutzungsprofil auf Ihre aktuellen Bedürfnisse.</p>
     </div>
 </a>
 </div>
