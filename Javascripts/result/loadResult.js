@@ -25,16 +25,6 @@ const result = ` <div class="flexbox mainHeader">
 </div>
 <p class="title">Unsere Top-3-Angebote für Sie!</p>
 <div class="flexbox offerContainer">
-<a class="flexbox offerCard" id="offerCard2Url" target = "_blank">
-    <p id="offerCard2Title" class="flexbox offerCardTitle"></p>
-    <div class="flexbox offerCardInfoBlock">
-        <p id="offerCard2Provider" class="offerInfoText">Anbieter: </p>
-        <p id="offerCard2BasePrice" class="offerInfoText">Basispreis: </p>
-        <p id="offerCard2UsageCost" class="offerInfoText">Geschätze Nutzkosten: </p>
-        <p id="offerCard2Total" class="offerInfoText offerTotal">Total pro Monat: </p>
-        <p id="offerCard2ActiFee" class="offerInfoText">Aktivierungsgebühr: </p>
-    </div>
-</a>
 <a class="flexbox offerCard" id="offerCard1Url" target = "_blank">
     <p id="offerCard1Title" class="flexbox offerCardTitle"></p>
     <div class="flexbox offerCardInfoBlock">
@@ -43,6 +33,16 @@ const result = ` <div class="flexbox mainHeader">
         <p id="offerCard1UsageCost" class="offerInfoText">Geschätze Nutzkosten: </p>
         <p id="offerCard1Total" class="offerInfoText offerTotal">Total pro Monat: </p>
         <p id="offerCard1ActiFee" class="offerInfoText">Aktivierungsgebühr: </p>
+    </div>
+</a>
+<a class="flexbox offerCard" id="offerCard2Url" target = "_blank">
+    <p id="offerCard2Title" class="flexbox offerCardTitle"></p>
+    <div class="flexbox offerCardInfoBlock">
+        <p id="offerCard2Provider" class="offerInfoText">Anbieter: </p>
+        <p id="offerCard2BasePrice" class="offerInfoText">Basispreis: </p>
+        <p id="offerCard2UsageCost" class="offerInfoText">Geschätze Nutzkosten: </p>
+        <p id="offerCard2Total" class="offerInfoText offerTotal">Total pro Monat: </p>
+        <p id="offerCard2ActiFee" class="offerInfoText">Aktivierungsgebühr: </p>
     </div>
 </a>
 <a class="flexbox offerCard" id="offerCard3Url" target = "_blank">
