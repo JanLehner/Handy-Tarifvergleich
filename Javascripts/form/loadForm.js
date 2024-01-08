@@ -126,7 +126,7 @@ const styleHolder = document.getElementById('styleHolder')
 const main = document.querySelector('main')
 
 const form = `<div class="flexbox mainHeader">
-<a class="flexbox btn cancelBtn">Cancel</a>
+<a class="flexbox btn cancelBtn">Home</a>
 </div>
 <p class="flexbox formTitle">Form</p>
 <div class="flexbox formQuestionDiv">

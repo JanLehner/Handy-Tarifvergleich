@@ -51,3 +51,8 @@ export async function isUserAdmin() {
     return false
   }
 }
+
+export function logout() {
+  sessionStorage.removeItem('token')
+  window.location.hash = '#login'
+}

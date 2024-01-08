@@ -1,6 +1,7 @@
 import {
   isUserAdmin,
   checkIfUserIsLoggedIn,
+  logout,
 } from '../functions/generalFunctions.js'
 
 export async function loadMenu() {
@@ -69,8 +70,3 @@ const menu = `<div class="flexbox mainHeader">
 </a>
 </div>
 </div>`
-
-function logout() {
-  sessionStorage.removeItem('token')
-  window.location.hash = '#login'
-}
