@@ -1,6 +1,10 @@
 const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
 
 export function loadOffer() {
+  if (sessionStorage.getItem('reload') == 'true') {
+    sessionStorage.setItem('reload', false)
+    window.location.reload()
+  }
   const styleHolder = document.getElementById('styleHolder')
   styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/offersStyle.css"></link>`
   const main = document.querySelector('main')
@@ -109,6 +113,16 @@ c0.199-0.982,0.291-1.992,0.291-2.986C385.063,227.715,383.438,223.764,380.59,220.
           deleteOffer(offer.offerId)
         })
       })
+      const addOfferCard = document.createElement('div')
+      addOfferCard.classList.add('flexbox', 'offerCard')
+      addOfferCard.setAttribute('id', `addOfferCard`)
+      addOfferCard.innerHTML = `<a class="flexbox btn" id="addOfferBtn">add</a>`
+      offersContainer.appendChild(addOfferCard)
+      const addOfferBtn = document.querySelector('#addOfferBtn')
+      addOfferBtn.addEventListener('click', () => {
+        main.innerHTML = ''
+        window.location.hash = '#add'
+      })
     })
     .catch((error) => {
       console.error('Error fetching data:', error)
@@ -116,7 +130,6 @@ c0.199-0.982,0.291-1.992,0.291-2.986C385.063,227.715,383.438,223.764,380.59,220.
 }
 
 async function deleteOffer(offerId) {
-  // löschen bestätigen
   if (!confirm('Wollen Sie das Angebot wirklich löschen?')) {
     return
   }
