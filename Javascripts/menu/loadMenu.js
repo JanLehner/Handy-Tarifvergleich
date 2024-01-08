@@ -22,6 +22,7 @@ export async function loadMenu() {
   const isAdmin = await isUserAdmin()
 
   if (isAdmin) {
+    document.querySelector('.infoMenuTitle').textContent = 'Willkommen Admin'
     const actionCardDiv = document.createElement('div')
     actionCardDiv.className = 'flexbox actionCardDiv'
     actionCardDiv.innerHTML = `
@@ -48,7 +49,7 @@ const menu = `<div class="flexbox mainHeader">
 <a class="flexbox btn logoutBtn">Logout</a>
 </div>
 <div class="flexbox infoMenuDiv">
-<p class="flexbox infoMenuTitle">Willkommen Benutzer.</p>
+<p class="flexbox infoMenuTitle">Willkommen Benutzer</p>
 <p class="flexbox infoMenuDescr">Was würden Sie gerne machen?</p>
 </div>
 <div class="flexbox actionsDiv">
