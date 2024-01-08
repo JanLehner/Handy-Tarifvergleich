@@ -7,9 +7,11 @@ import { loadResult } from './Javascripts/result/loadResult.js'
 import { loadOffer } from './Javascripts/offer/loadOffer.js'
 import { loadDetailView } from './Javascripts/detailView/loadDetailView.js'
 import { loadLoading } from './Javascripts/loading/loadLoading.js'
+import { loadAdd } from './Javascripts/add/loadAdd.js'
 
 const main = document.querySelector('main')
 getAllRoutes()
+
 export function getAllRoutes() {
   const routes = {
     form: { hash: '#form', function: loadForm },
@@ -19,6 +21,7 @@ export function getAllRoutes() {
     result: { hash: '#result', function: loadResult },
     offer: { hash: '#offer', function: loadOffer },
     loading: { hash: '#loading', function: loadLoading },
+    add: { hash: '#add', function: loadAdd },
     error: { function: renderNotFound },
   }
 
