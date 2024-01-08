@@ -1,89 +1,89 @@
 :root {
-    --dark-blue: #1D2731;
-    --blue: #12323E;
-    --grey: #33535D;
-    --light-green: #47DF9C;
-    --dark-green: #2da670;
+  --dark-blue: #1d2731;
+  --blue: #12323e;
+  --grey: #33535d;
+  --light-green: #47df9c;
+  --dark-green: #2da670;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    color: white;
-    background-color: var(--dark-blue);
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: white;
+  background-color: var(--dark-blue);
+  font-family: 'Poppins', sans-serif;
 }
 
 #container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 150px auto 80px;
-    grid-template-areas:
-        'header header header'
-        'main main main'
-        'footer footer footer';
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 80px auto 40px;
+  grid-template-areas:
+    'header header header'
+    'main main main'
+    'footer footer footer';
+  height: 100%;
 }
 
 .flexbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .notFound {
-    text-decoration: none;
-    border-radius: 0.5em;
-    padding: 3%;
+  text-decoration: none;
+  border-radius: 0.5em;
+  padding: 3%;
 }
 
 .notFound:hover {
-    padding: 4%;
+  padding: 4%;
 }
 
 header {
-    grid-area: header;
-    background-color: var(--dark-blue);
-    color: var(--dark-green);
-    font-size: 35px;
+  grid-area: header;
+  background-color: var(--dark-blue);
+  color: var(--dark-green);
+  font-size: 35px;
 }
 
 @media screen and (max-width: 350px) {
-    header {
-        font-size: 25px;
-    }
+  header {
+    font-size: 25px;
+  }
 }
 
 main {
-    grid-area: main;
-    background-color: var(--blue);
-    color: var(--light-green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  grid-area: main;
+  background-color: var(--blue);
+  color: var(--light-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 footer {
-    grid-area: footer;
-    background-color: var(--dark-blue);
-    color: var(--dark-green);
-    font-size: 20px;
+  grid-area: footer;
+  background-color: var(--dark-blue);
+  color: var(--dark-green);
+  font-size: 20px;
 }
 
 .btn {
-    text-align: center;
-    background-color: var(--dark-green);
-    color: var(--dark-blue);
+  text-align: center;
+  background-color: var(--dark-green);
+  color: var(--dark-blue);
 }
 
 .btn:hover {
-    background-color: var(--light-green);
-    cursor: pointer;
+  background-color: var(--light-green);
+  cursor: pointer;
 }
