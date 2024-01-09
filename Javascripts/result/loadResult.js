@@ -1,7 +1,4 @@
-import {
-    checkIfUserIsLoggedIn,
-    logout,
-} from '../functions/generalFunctions.js'
+import { checkIfUserIsLoggedIn, logout } from '../functions/generalFunctions.js'
 
 export async function loadResult() {
     const isUserLoggedIn = await checkIfUserIsLoggedIn()
@@ -120,7 +117,6 @@ function getBestWorldOffers(offers, userForm) {
     offers.forEach((offer) => {
         if (offer.worldOffer == true) {
             const offerCost = calculateCostForOffer(offer, userForm)
-            console.log(offer)
             const formatedOffer = formatOffer(
                 offer.offerUrl,
                 offer.name,
@@ -156,8 +152,7 @@ function calculateCostForOffer(offer, userForm) {
     price += NettoCallminutesPerMonthCH * offer.cost.callPerCallminuteCH
     price += NettoGBPerMonthCH * offer.cost.internetPerGBCH
     price += NettoSMSPerMonthCH * offer.cost.smsPerCountCH
-    price +=
-        NettoCallminutesPerMonthEurope * offer.cost.callPerCallminuteEurope
+    price += NettoCallminutesPerMonthEurope * offer.cost.callPerCallminuteEurope
     price += NettoGBPerMonthEurope * offer.cost.internetPerGBEurope
     price += NettoSMSPerMonthEurope * offer.cost.smsPerCountEurope
 

@@ -1,17 +1,23 @@
 const API_URL = 'https://handy-tarifvergleich-server.azurewebsites.net'
 
 export function loadRegister() {
-    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>'
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>'
     main.innerHTML = register
     errorMessage = document.querySelector('.errorMessage')
     document.querySelector('#btnLogin').addEventListener('click', registerUser)
-    document.querySelector('#inputUsername').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
-    })
-    document.querySelector('#inputPassword').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter')
-            document.querySelector('#inputPasswordReenter').focus()
-    })
+    document
+        .querySelector('#inputUsername')
+        .addEventListener('keydown', (e) => {
+            if (e.key === 'Enter')
+                document.querySelector('#inputPassword').focus()
+        })
+    document
+        .querySelector('#inputPassword')
+        .addEventListener('keydown', (e) => {
+            if (e.key === 'Enter')
+                document.querySelector('#inputPasswordReenter').focus()
+        })
     document
         .querySelector('#inputPasswordReenter')
         .addEventListener('keydown', (e) => {
@@ -39,7 +45,9 @@ const register = `<div class="flexbox mainHeader">
 async function registerUser() {
     const username = document.getElementById('inputUsername').value
     const password = document.getElementById('inputPassword').value
-    const passwordReenter = document.getElementById('inputPasswordReenter').value
+    const passwordReenter = document.getElementById(
+        'inputPasswordReenter',
+    ).value
     if (password != passwordReenter) {
         errorMessage.innerHTML = 'Passwörter stimmen nicht überein'
         errorMessage.style.display = 'block'

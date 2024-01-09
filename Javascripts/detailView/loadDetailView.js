@@ -10,14 +10,15 @@ export async function loadDetailView(id) {
     if (!isAdmin) return (window.location.hash = '#menu')
 
     const styleHolder = document.getElementById('styleHolder')
-    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/detailViewStyle.css"></link>'
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/detailViewStyle.css"></link>'
     await getOfferData(id)
 }
 
 async function getOfferData(offerId) {
     const main = document.querySelector('main')
     fetch(
-        `https://handy-tarifvergleich-server.azurewebsites.net/offers?offerId=${offerId}`
+        `https://handy-tarifvergleich-server.azurewebsites.net/offers?offerId=${offerId}`,
     )
         .then((res) => res.json())
         .then((data) => {
@@ -116,7 +117,7 @@ async function getOfferData(offerId) {
             })
 
             const errorMessageContainer = document.querySelector(
-                '#errorMessageContainer'
+                '#errorMessageContainer',
             )
             const errorMessage = document.createElement('p')
             errorMessage.classList.add('errorMessage')
@@ -140,10 +141,12 @@ async function getOfferData(offerId) {
                 }
             })
 
-            document.querySelector('.cancelBtn').addEventListener('click', () => {
-                main.innerHTML = ''
-                window.location.hash = '#offer'
-            })
+            document
+                .querySelector('.cancelBtn')
+                .addEventListener('click', () => {
+                    main.innerHTML = ''
+                    window.location.hash = '#offer'
+                })
 
             document.querySelector('#worldOffer').checked = data.worldOffer
         })
@@ -157,25 +160,25 @@ async function saveOfferData(offerId) {
     const basePrice = document.getElementById('basePrice').value
     const worldOffer = document.getElementById('worldOffer').checked
     const callPerCallminuteCH = document.getElementById(
-        'callPerCallminuteCH'
+        'callPerCallminuteCH',
     ).value
     const internetPerGBCH = document.getElementById('internetPerGBCH').value
     const smsPerCountCH = document.getElementById('smsPerCountCH').value
     const callPerCallminuteEurope = document.getElementById(
-        'callPerCallminuteEurope'
+        'callPerCallminuteEurope',
     ).value
     const internetPerGBEurope = document.getElementById(
-        'internetPerGBEurope'
+        'internetPerGBEurope',
     ).value
     const smsPerCountEurope = document.getElementById('smsPerCountEurope').value
     const freeGBInternetCH = document.getElementById('freeGBInternetCH').value
     const freeCallminutesCH = document.getElementById('freeCallminutesCH').value
     const freeSMSCH = document.getElementById('freeSMSCH').value
     const freeGBInternetEurope = document.getElementById(
-        'freeGBInternetEurope'
+        'freeGBInternetEurope',
     ).value
     const freeCallminutesEurope = document.getElementById(
-        'freeCallminutesEurope'
+        'freeCallminutesEurope',
     ).value
     const freeSMSEurope = document.getElementById('freeSMSEurope').value
     const activationFee = document.getElementById('activationFee').value

@@ -12,7 +12,8 @@ export async function loadAdd() {
     if (!isAdmin) return (window.location.hash = '#menu')
 
     const styleHolder = document.getElementById('styleHolder')
-    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/detailViewStyle.css"></link>'
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/detailViewStyle.css"></link>'
 
     main.innerHTML = `<div class="flexbox mainHeader">
       <a class="flexbox btn cancelBtn">Cancel</a>
@@ -98,7 +99,9 @@ export async function loadAdd() {
       </div>`
 
     const inputFields = document.querySelectorAll('.infoInput')
-    const errorMessageContainer = document.querySelector('#errorMessageContainer')
+    const errorMessageContainer = document.querySelector(
+        '#errorMessageContainer',
+    )
     const errorMessage = document.createElement('p')
     errorMessage.classList.add('errorMessage')
     errorMessage.textContent = 'Bitte füllen Sie alle Felder aus.'
@@ -147,25 +150,25 @@ async function saveOffer(offerId) {
     const basePrice = document.getElementById('basePrice').value
     const worldOffer = document.getElementById('worldOffer').checked
     const callPerCallminuteCH = document.getElementById(
-        'callPerCallminuteCH'
+        'callPerCallminuteCH',
     ).value
     const internetPerGBCH = document.getElementById('internetPerGBCH').value
     const smsPerCountCH = document.getElementById('smsPerCountCH').value
     const callPerCallminuteEurope = document.getElementById(
-        'callPerCallminuteEurope'
+        'callPerCallminuteEurope',
     ).value
     const internetPerGBEurope = document.getElementById(
-        'internetPerGBEurope'
+        'internetPerGBEurope',
     ).value
     const smsPerCountEurope = document.getElementById('smsPerCountEurope').value
     const freeGBInternetCH = document.getElementById('freeGBInternetCH').value
     const freeCallminutesCH = document.getElementById('freeCallminutesCH').value
     const freeSMSCH = document.getElementById('freeSMSCH').value
     const freeGBInternetEurope = document.getElementById(
-        'freeGBInternetEurope'
+        'freeGBInternetEurope',
     ).value
     const freeCallminutesEurope = document.getElementById(
-        'freeCallminutesEurope'
+        'freeCallminutesEurope',
     ).value
     const freeSMSEurope = document.getElementById('freeSMSEurope').value
     const activationFee = document.getElementById('activationFee').value
@@ -195,7 +198,8 @@ async function saveOffer(offerId) {
         },
         activationFee: activationFee,
     }
-    const saveOfferURL = 'https://handy-tarifvergleich-server.azurewebsites.net/offers/add'
+    const saveOfferURL =
+        'https://handy-tarifvergleich-server.azurewebsites.net/offers/add'
     try {
         const response = await fetch(saveOfferURL, {
             method: 'POST',

@@ -4,7 +4,8 @@ export async function loadForm() {
     const isUserLoggedIn = await checkIfUserIsLoggedIn()
     if (!isUserLoggedIn) return (window.location.hash = '#login')
 
-    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/formStyle.css"></link>'
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/formStyle.css"></link>'
     main.innerHTML = form
     document.querySelector('.saveBtn').addEventListener('click', saveUserForm())
     document.querySelector('.cancelBtn').addEventListener('click', () => {
@@ -25,97 +26,97 @@ function getUserFormData() {
         .then((res) => res.json())
         .then((data) => {
             document.querySelector('input[name="q1"][value="Ja"]').checked =
-        data.Form.StrongWorldWideUsage
+                data.Form.StrongWorldWideUsage
             document.querySelector('input[name="q1"][value="Nein"]').checked =
-        !data.Form.StrongWorldWideUsage
+                !data.Form.StrongWorldWideUsage
             document.querySelector('input[name="q2"][value="0"]').checked =
-        data.Form.CallminutesPerMonthCH == 0
+                data.Form.CallminutesPerMonthCH == 0
             document.querySelector('input[name="q2"][value="2"]').checked =
-        data.Form.CallminutesPerMonthCH == 2
+                data.Form.CallminutesPerMonthCH == 2
             document.querySelector('input[name="q2"][value="5"]').checked =
-        data.Form.CallminutesPerMonthCH == 5
+                data.Form.CallminutesPerMonthCH == 5
             document.querySelector('input[name="q2"][value="10"]').checked =
-        data.Form.CallminutesPerMonthCH == 10
+                data.Form.CallminutesPerMonthCH == 10
             document.querySelector('input[name="q2"][value="30"]').checked =
-        data.Form.CallminutesPerMonthCH == 30
+                data.Form.CallminutesPerMonthCH == 30
             document.querySelector('input[name="q2"][value="60"]').checked =
-        data.Form.CallminutesPerMonthCH == 60
+                data.Form.CallminutesPerMonthCH == 60
             document.querySelector('input[name="q2"][value="120"]').checked =
-        data.Form.CallminutesPerMonthCH == 120
+                data.Form.CallminutesPerMonthCH == 120
             document.querySelector('input[name="q2"][value="180"]').checked =
-        data.Form.CallminutesPerMonthCH == 180
+                data.Form.CallminutesPerMonthCH == 180
             document.querySelector('input[name="q3"][value="0"]').checked =
-        data.Form.CallminutesPerMonthEurope == 0
+                data.Form.CallminutesPerMonthEurope == 0
             document.querySelector('input[name="q3"][value="2"]').checked =
-        data.Form.CallminutesPerMonthEurope == 2
+                data.Form.CallminutesPerMonthEurope == 2
             document.querySelector('input[name="q3"][value="5"]').checked =
-        data.Form.CallminutesPerMonthEurope == 5
+                data.Form.CallminutesPerMonthEurope == 5
             document.querySelector('input[name="q3"][value="10"]').checked =
-        data.Form.CallminutesPerMonthEurope == 10
+                data.Form.CallminutesPerMonthEurope == 10
             document.querySelector('input[name="q3"][value="30"]').checked =
-        data.Form.CallminutesPerMonthEurope == 30
+                data.Form.CallminutesPerMonthEurope == 30
             document.querySelector('input[name="q3"][value="60"]').checked =
-        data.Form.CallminutesPerMonthEurope == 60
+                data.Form.CallminutesPerMonthEurope == 60
             document.querySelector('input[name="q3"][value="120"]').checked =
-        data.Form.CallminutesPerMonthEurope == 120
+                data.Form.CallminutesPerMonthEurope == 120
             document.querySelector('input[name="q3"][value="180"]').checked =
-        data.Form.CallminutesPerMonthEurope == 180
+                data.Form.CallminutesPerMonthEurope == 180
             document.querySelector('input[name="q4"][value="0"]').checked =
-        data.Form.GBPerMonthCH == 0
+                data.Form.GBPerMonthCH == 0
             document.querySelector('input[name="q4"][value="1"]').checked =
-        data.Form.GBPerMonthCH == 1
+                data.Form.GBPerMonthCH == 1
             document.querySelector('input[name="q4"][value="5"]').checked =
-        data.Form.GBPerMonthCH == 5
+                data.Form.GBPerMonthCH == 5
             document.querySelector('input[name="q4"][value="10"]').checked =
-        data.Form.GBPerMonthCH == 10
+                data.Form.GBPerMonthCH == 10
             document.querySelector('input[name="q4"][value="20"]').checked =
-        data.Form.GBPerMonthCH == 20
+                data.Form.GBPerMonthCH == 20
             document.querySelector('input[name="q4"][value="50"]').checked =
-        data.Form.GBPerMonthCH == 50
+                data.Form.GBPerMonthCH == 50
             document.querySelector('input[name="q4"][value="100"]').checked =
-        data.Form.GBPerMonthCH == 100
+                data.Form.GBPerMonthCH == 100
             document.querySelector('input[name="q5"][value="0"]').checked =
-        data.Form.GBPerMonthEurope == 0
+                data.Form.GBPerMonthEurope == 0
             document.querySelector('input[name="q5"][value="1"]').checked =
-        data.Form.GBPerMonthEurope == 1
+                data.Form.GBPerMonthEurope == 1
             document.querySelector('input[name="q5"][value="5"]').checked =
-        data.Form.GBPerMonthEurope == 5
+                data.Form.GBPerMonthEurope == 5
             document.querySelector('input[name="q5"][value="10"]').checked =
-        data.Form.GBPerMonthEurope == 10
+                data.Form.GBPerMonthEurope == 10
             document.querySelector('input[name="q5"][value="20"]').checked =
-        data.Form.GBPerMonthEurope == 20
+                data.Form.GBPerMonthEurope == 20
             document.querySelector('input[name="q5"][value="50"]').checked =
-        data.Form.GBPerMonthEurope == 50
+                data.Form.GBPerMonthEurope == 50
             document.querySelector('input[name="q5"][value="100"]').checked =
-        data.Form.GBPerMonthEurope == 100
+                data.Form.GBPerMonthEurope == 100
             document.querySelector('input[name="q6"][value="0"]').checked =
-        data.Form.SMSPerMonthCH == 0
+                data.Form.SMSPerMonthCH == 0
             document.querySelector('input[name="q6"][value="2"]').checked =
-        data.Form.SMSPerMonthCH == 2
+                data.Form.SMSPerMonthCH == 2
             document.querySelector('input[name="q6"][value="5"]').checked =
-        data.Form.SMSPerMonthCH == 5
+                data.Form.SMSPerMonthCH == 5
             document.querySelector('input[name="q6"][value="10"]').checked =
-        data.Form.SMSPerMonthCH == 10
+                data.Form.SMSPerMonthCH == 10
             document.querySelector('input[name="q6"][value="20"]').checked =
-        data.Form.SMSPerMonthCH == 20
+                data.Form.SMSPerMonthCH == 20
             document.querySelector('input[name="q6"][value="50"]').checked =
-        data.Form.SMSPerMonthCH == 50
+                data.Form.SMSPerMonthCH == 50
             document.querySelector('input[name="q6"][value="100"]').checked =
-        data.Form.SMSPerMonthCH == 100
+                data.Form.SMSPerMonthCH == 100
             document.querySelector('input[name="q7"][value="0"]').checked =
-        data.Form.SMSPerMonthEurope == 0
+                data.Form.SMSPerMonthEurope == 0
             document.querySelector('input[name="q7"][value="2"]').checked =
-        data.Form.SMSPerMonthEurope == 2
+                data.Form.SMSPerMonthEurope == 2
             document.querySelector('input[name="q7"][value="5"]').checked =
-        data.Form.SMSPerMonthEurope == 5
+                data.Form.SMSPerMonthEurope == 5
             document.querySelector('input[name="q7"][value="10"]').checked =
-        data.Form.SMSPerMonthEurope == 10
+                data.Form.SMSPerMonthEurope == 10
             document.querySelector('input[name="q7"][value="20"]').checked =
-        data.Form.SMSPerMonthEurope == 20
+                data.Form.SMSPerMonthEurope == 20
             document.querySelector('input[name="q7"][value="50"]').checked =
-        data.Form.SMSPerMonthEurope == 50
+                data.Form.SMSPerMonthEurope == 50
             document.querySelector('input[name="q7"][value="100"]').checked =
-        data.Form.SMSPerMonthEurope == 100
+                data.Form.SMSPerMonthEurope == 100
         })
         .catch((error) => {
             console.error('Error fetching data:', error)
@@ -319,17 +320,21 @@ function saveUserForm() {
         else strongWorldWideUsage = false
         const form = {
             StrongWorldWideUsage: strongWorldWideUsage,
-            CallminutesPerMonthCH: document.querySelector('input[name="q2"]:checked')
-                .value,
-            CallminutesPerMonthEurope: document.querySelector(
-                'input[name="q3"]:checked'
+            CallminutesPerMonthCH: document.querySelector(
+                'input[name="q2"]:checked',
             ).value,
-            GBPerMonthCH: document.querySelector('input[name="q4"]:checked').value,
+            CallminutesPerMonthEurope: document.querySelector(
+                'input[name="q3"]:checked',
+            ).value,
+            GBPerMonthCH: document.querySelector('input[name="q4"]:checked')
+                .value,
             GBPerMonthEurope: document.querySelector('input[name="q5"]:checked')
                 .value,
-            SMSPerMonthCH: document.querySelector('input[name="q6"]:checked').value,
-            SMSPerMonthEurope: document.querySelector('input[name="q7"]:checked')
+            SMSPerMonthCH: document.querySelector('input[name="q6"]:checked')
                 .value,
+            SMSPerMonthEurope: document.querySelector(
+                'input[name="q7"]:checked',
+            ).value,
         }
 
         fetch(
@@ -342,7 +347,7 @@ function saveUserForm() {
                     Authorization: `Bearer ${sessionStorage.getItem('token')}`,
                 },
                 body: JSON.stringify(form),
-            }
+            },
         )
             .then(() => {
                 main.innerHTML = ''

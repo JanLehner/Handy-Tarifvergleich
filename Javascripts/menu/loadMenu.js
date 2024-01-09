@@ -8,12 +8,15 @@ export async function loadMenu() {
     const isUserLoggedIn = await checkIfUserIsLoggedIn()
     if (!isUserLoggedIn) return (window.location.hash = '#login')
 
-    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/menuStyle.css"></link>'
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/menuStyle.css"></link>'
     main.innerHTML = menu
     document.querySelector('.logoutBtn').addEventListener('click', logout)
-    document.querySelector('#editProfileButton').addEventListener('click', () => {
-        window.location.hash = '#form'
-    })
+    document
+        .querySelector('#editProfileButton')
+        .addEventListener('click', () => {
+            window.location.hash = '#form'
+        })
     document
         .querySelector('#determineSubButton')
         .addEventListener('click', () => {
@@ -23,7 +26,8 @@ export async function loadMenu() {
     const isAdmin = await isUserAdmin()
 
     if (isAdmin) {
-        document.querySelector('.infoMenuTitle').textContent = 'Willkommen Admin'
+        document.querySelector('.infoMenuTitle').textContent =
+            'Willkommen Admin'
         const actionCardDiv = document.createElement('div')
         actionCardDiv.className = 'flexbox actionCardDiv'
         actionCardDiv.innerHTML = `

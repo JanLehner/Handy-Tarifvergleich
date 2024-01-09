@@ -7,13 +7,15 @@ export async function loadLogin() {
     if (isUserLoggedIn) {
         window.location.hash = '#menu'
     } else {
-        styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>'
+        styleHolder.innerHTML =
+            '<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>'
         main.innerHTML = login
         document.querySelector('#btnLogin').addEventListener('click', loginUser)
         document
             .querySelector('#inputUsername')
             .addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
+                if (e.key === 'Enter')
+                    document.querySelector('#inputPassword').focus()
             })
         document
             .querySelector('#inputPassword')
