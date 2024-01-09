@@ -1,22 +1,22 @@
-const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
+const API_URL = 'https://handy-tarifvergleich-server.azurewebsites.net'
 
 export function loadRegister() {
-  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>`
-  main.innerHTML = register
-  errorMessage = document.querySelector('.errorMessage')
-  document.querySelector('#btnLogin').addEventListener('click', registerUser)
-  document.querySelector('#inputUsername').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
-  })
-  document.querySelector('#inputPassword').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter')
-      document.querySelector('#inputPasswordReenter').focus()
-  })
-  document
-    .querySelector('#inputPasswordReenter')
-    .addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') registerUser()
+    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/loginStyle.css"></link>'
+    main.innerHTML = register
+    errorMessage = document.querySelector('.errorMessage')
+    document.querySelector('#btnLogin').addEventListener('click', registerUser)
+    document.querySelector('#inputUsername').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') document.querySelector('#inputPassword').focus()
     })
+    document.querySelector('#inputPassword').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter')
+            document.querySelector('#inputPasswordReenter').focus()
+    })
+    document
+        .querySelector('#inputPasswordReenter')
+        .addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') registerUser()
+        })
 }
 
 let errorMessage
@@ -37,42 +37,42 @@ const register = `<div class="flexbox mainHeader">
 </div>`
 
 async function registerUser() {
-  const username = document.getElementById('inputUsername').value
-  const password = document.getElementById('inputPassword').value
-  const passwordReenter = document.getElementById('inputPasswordReenter').value
-  if (password != passwordReenter) {
-    errorMessage.innerHTML = 'Passwörter stimmen nicht überein'
-    errorMessage.style.display = 'block'
-    return
-  } else {
-    errorMessage.style.display = 'none'
-  }
-  const registerURL = API_URL + '/register'
-  try {
-    const response = await fetch(`${registerURL}`, {
-      method: 'POST',
-      headers: {
-        Accept: '*/*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-
-    const data = await response.text()
-
-    if (response.status === 200) {
-      sessionStorage.setItem('token', data)
-      window.location.hash = '#menu'
-    } else if (response.status === 400) {
-      errorMessage.innerHTML = 'Benutzername bereits vergeben'
-      errorMessage.style.display = 'block'
+    const username = document.getElementById('inputUsername').value
+    const password = document.getElementById('inputPassword').value
+    const passwordReenter = document.getElementById('inputPasswordReenter').value
+    if (password != passwordReenter) {
+        errorMessage.innerHTML = 'Passwörter stimmen nicht überein'
+        errorMessage.style.display = 'block'
+        return
     } else {
-      console.log('Registration error:', data)
+        errorMessage.style.display = 'none'
     }
-  } catch (error) {
-    console.error('Registration error:', error.message)
-  }
+    const registerURL = API_URL + '/register'
+    try {
+        const response = await fetch(`${registerURL}`, {
+            method: 'POST',
+            headers: {
+                Accept: '*/*',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password,
+            }),
+        })
+
+        const data = await response.text()
+
+        if (response.status === 200) {
+            sessionStorage.setItem('token', data)
+            window.location.hash = '#menu'
+        } else if (response.status === 400) {
+            errorMessage.innerHTML = 'Benutzername bereits vergeben'
+            errorMessage.style.display = 'block'
+        } else {
+            console.log('Registration error:', data)
+        }
+    } catch (error) {
+        console.error('Registration error:', error.message)
+    }
 }

@@ -1,44 +1,44 @@
-const API_URL = `https://handy-tarifvergleich-server.azurewebsites.net`
+const API_URL = 'https://handy-tarifvergleich-server.azurewebsites.net'
 
 export function loadOffer() {
-  if (sessionStorage.getItem('reload') == 'true') {
-    sessionStorage.setItem('reload', false)
-    window.location.reload()
-  }
-  const styleHolder = document.getElementById('styleHolder')
-  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/offersStyle.css"></link>`
-  const main = document.querySelector('main')
-  main.innerHTML = `<div class="flexbox mainHeader">
+    if (sessionStorage.getItem('reload') == 'true') {
+        sessionStorage.setItem('reload', false)
+        window.location.reload()
+    }
+    const styleHolder = document.getElementById('styleHolder')
+    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/offersStyle.css"></link>'
+    const main = document.querySelector('main')
+    main.innerHTML = `<div class="flexbox mainHeader">
     <a class="flexbox btn" id="homeBtn">Home</a>
     <a class="flexbox btn" id="logoutBtn">Logout</a>
     </div>
     <p class="title">Abonnements</p>
     <div class="flexbox offerContainer"></div>`
 
-  document.querySelector('#homeBtn').addEventListener('click', () => {
-    window.location.hash = '#menu'
-  })
+    document.querySelector('#homeBtn').addEventListener('click', () => {
+        window.location.hash = '#menu'
+    })
 
-  document.querySelector('#logoutBtn').addEventListener('click', () => {
-    sessionStorage.removeItem('token')
-    window.location.hash = '#login'
-  })
+    document.querySelector('#logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('token')
+        window.location.hash = '#login'
+    })
 
-  const loadOfferURL = API_URL + '/offers/all'
+    const loadOfferURL = API_URL + '/offers/all'
 
-  fetch(`${loadOfferURL}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const offersContainer = document.querySelector('.offerContainer')
-      data.forEach((offer) => {
-        const offerCard = document.createElement('div')
-        offerCard.classList.add('flexbox', 'offerCard')
-        offerCard.setAttribute('id', `offer${offer.offerId}`)
+    fetch(`${loadOfferURL}`)
+        .then((response) => response.json())
+        .then((data) => {
+            const offersContainer = document.querySelector('.offerContainer')
+            data.forEach((offer) => {
+                const offerCard = document.createElement('div')
+                offerCard.classList.add('flexbox', 'offerCard')
+                offerCard.setAttribute('id', `offer${offer.offerId}`)
 
-        const offerCardHeader = document.createElement('div')
-        offerCardHeader.classList.add('flexbox', 'offerCardHeader')
+                const offerCardHeader = document.createElement('div')
+                offerCardHeader.classList.add('flexbox', 'offerCardHeader')
 
-        offerCardHeader.innerHTML = `
+                offerCardHeader.innerHTML = `
         <a class="flexbox btn offerCardBtn" id="offerEditBtn${offer.offerId}">
             <svg width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="icomoon-ignore">
@@ -79,85 +79,85 @@ c0.199-0.982,0.291-1.992,0.291-2.986C385.063,227.715,383.438,223.764,380.59,220.
             </svg>
         </a>`
 
-        const offerCardMain = document.createElement('div')
-        offerCardMain.classList.add('flexbox', 'offerCardMain')
+                const offerCardMain = document.createElement('div')
+                offerCardMain.classList.add('flexbox', 'offerCardMain')
 
-        const offerName = document.createElement('p')
-        offerName.classList.add('offerCardText')
-        offerName.textContent = `Angebotsname: ${offer.name}`
+                const offerName = document.createElement('p')
+                offerName.classList.add('offerCardText')
+                offerName.textContent = `Angebotsname: ${offer.name}`
 
-        const offerProvider = document.createElement('p')
-        offerProvider.classList.add('offerCardText')
-        offerProvider.textContent = `Anbieter: ${offer.provider}`
+                const offerProvider = document.createElement('p')
+                offerProvider.classList.add('offerCardText')
+                offerProvider.textContent = `Anbieter: ${offer.provider}`
 
-        offerCardMain.appendChild(offerName)
-        offerCardMain.appendChild(offerProvider)
+                offerCardMain.appendChild(offerName)
+                offerCardMain.appendChild(offerProvider)
 
-        offerCard.appendChild(offerCardHeader)
-        offerCard.appendChild(offerCardMain)
+                offerCard.appendChild(offerCardHeader)
+                offerCard.appendChild(offerCardMain)
 
-        offersContainer.appendChild(offerCard)
+                offersContainer.appendChild(offerCard)
 
-        const offerCardEdit = document.querySelector(
-          `#offerEditBtn${offer.offerId}`
-        )
-        offerCardEdit.addEventListener('click', () => {
-          main.innerHTML = ''
-          window.location.hash = `#detail${offer.offerId}`
+                const offerCardEdit = document.querySelector(
+                    `#offerEditBtn${offer.offerId}`
+                )
+                offerCardEdit.addEventListener('click', () => {
+                    main.innerHTML = ''
+                    window.location.hash = `#detail${offer.offerId}`
+                })
+
+                const offerCardDelete = document.querySelector(
+                    `#offerDeleteBtn${offer.offerId}`
+                )
+                offerCardDelete.addEventListener('click', () => {
+                    deleteOffer(offer.offerId)
+                })
+            })
+            const addOfferCard = document.createElement('div')
+            addOfferCard.classList.add('flexbox', 'offerCard')
+            addOfferCard.setAttribute('id', 'addOfferCard')
+            addOfferCard.innerHTML = '<a class="flexbox btn" id="addOfferBtn">add</a>'
+            offersContainer.appendChild(addOfferCard)
+            const addOfferBtn = document.querySelector('#addOfferBtn')
+            addOfferBtn.addEventListener('click', () => {
+                main.innerHTML = ''
+                window.location.hash = '#add'
+            })
         })
-
-        const offerCardDelete = document.querySelector(
-          `#offerDeleteBtn${offer.offerId}`
-        )
-        offerCardDelete.addEventListener('click', () => {
-          deleteOffer(offer.offerId)
+        .catch((error) => {
+            console.error('Error fetching data:', error)
         })
-      })
-      const addOfferCard = document.createElement('div')
-      addOfferCard.classList.add('flexbox', 'offerCard')
-      addOfferCard.setAttribute('id', `addOfferCard`)
-      addOfferCard.innerHTML = `<a class="flexbox btn" id="addOfferBtn">add</a>`
-      offersContainer.appendChild(addOfferCard)
-      const addOfferBtn = document.querySelector('#addOfferBtn')
-      addOfferBtn.addEventListener('click', () => {
-        main.innerHTML = ''
-        window.location.hash = '#add'
-      })
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error)
-    })
 }
 
 async function deleteOffer(offerId) {
-  if (!confirm('Wollen Sie das Angebot wirklich löschen?')) {
-    return
-  }
-
-  const deleteOfferURL = API_URL + `/offers/delete?offerId=${offerId}`
-
-  try {
-    const response = await fetch(`${deleteOfferURL}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: '*/*',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-      },
-    })
-
-    if (!response.ok) {
-      throw new Error('Could not delete offer (HTTP error)')
+    if (!confirm('Wollen Sie das Angebot wirklich löschen?')) {
+        return
     }
 
-    const data = await response.text()
+    const deleteOfferURL = API_URL + `/offers/delete?offerId=${offerId}`
 
-    if (response.status === 200) {
-      window.location.reload()
-    } else {
-      console.log('Delete offer error:', data)
+    try {
+        const response = await fetch(`${deleteOfferURL}`, {
+            method: 'DELETE',
+            headers: {
+                Accept: '*/*',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+            },
+        })
+
+        if (!response.ok) {
+            throw new Error('Could not delete offer (HTTP error)')
+        }
+
+        const data = await response.text()
+
+        if (response.status === 200) {
+            window.location.reload()
+        } else {
+            console.log('Delete offer error:', data)
+        }
+    } catch (err) {
+        console.error(err)
     }
-  } catch (err) {
-    console.error(err)
-  }
 }

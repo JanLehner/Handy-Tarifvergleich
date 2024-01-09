@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "lint": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "@stylistic/eslint-plugin-js": "^1.4.0",
+    "eslint-config-prettier": "^9.1.0"
+  }
+}

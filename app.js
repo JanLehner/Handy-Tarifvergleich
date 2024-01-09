@@ -13,35 +13,35 @@ const main = document.querySelector('main')
 getAllRoutes()
 
 export function getAllRoutes() {
-  const routes = {
-    form: { hash: '#form', function: loadForm },
-    login: { hash: '#login', function: loadLogin },
-    register: { hash: '#register', function: loadRegister },
-    menu: { hash: '#menu', function: loadMenu },
-    result: { hash: '#result', function: loadResult },
-    offer: { hash: '#offer', function: loadOffer },
-    loading: { hash: '#loading', function: loadLoading },
-    add: { hash: '#add', function: loadAdd },
-    error: { function: renderNotFound },
-  }
+    const routes = {
+        form: { hash: '#form', function: loadForm },
+        login: { hash: '#login', function: loadLogin },
+        register: { hash: '#register', function: loadRegister },
+        menu: { hash: '#menu', function: loadMenu },
+        result: { hash: '#result', function: loadResult },
+        offer: { hash: '#offer', function: loadOffer },
+        loading: { hash: '#loading', function: loadLoading },
+        add: { hash: '#add', function: loadAdd },
+        error: { function: renderNotFound },
+    }
 
-  fetch('https://handy-tarifvergleich-server.azurewebsites.net/offers/all')
-    .then((res) => res.json())
-    .then((data) => {
-      data.forEach((element) => {
-        routes[`detail${element.offerId}`] = {
-          hash: `#detail${element.offerId}`,
-          function: loadDetailView,
-          id: element.offerId,
-        }
-      })
-      const router = new Router(routes)
-      router.urlResolve()
-    })
+    fetch('https://handy-tarifvergleich-server.azurewebsites.net/offers/all')
+        .then((res) => res.json())
+        .then((data) => {
+            data.forEach((element) => {
+                routes[`detail${element.offerId}`] = {
+                    hash: `#detail${element.offerId}`,
+                    function: loadDetailView,
+                    id: element.offerId,
+                }
+            })
+            const router = new Router(routes)
+            router.urlResolve()
+        })
 
-  function renderNotFound() {
-    main.innerHTML = `
+    function renderNotFound() {
+        main.innerHTML = `
   <h1>404 | Not found</h1>
   <a class="flexbox btn notFound" href="#">Return to home</a>`
-  }
+    }
 }

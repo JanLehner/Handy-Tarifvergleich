@@ -1,47 +1,47 @@
 import {
-  isUserAdmin,
-  checkIfUserIsLoggedIn,
-  logout,
+    isUserAdmin,
+    checkIfUserIsLoggedIn,
+    logout,
 } from '../functions/generalFunctions.js'
 
 export async function loadMenu() {
-  const isUserLoggedIn = await checkIfUserIsLoggedIn()
-  if (!isUserLoggedIn) return (window.location.hash = '#login')
+    const isUserLoggedIn = await checkIfUserIsLoggedIn()
+    if (!isUserLoggedIn) return (window.location.hash = '#login')
 
-  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/menuStyle.css"></link>`
-  main.innerHTML = menu
-  document.querySelector('.logoutBtn').addEventListener('click', logout)
-  document.querySelector('#editProfileButton').addEventListener('click', () => {
-    window.location.hash = '#form'
-  })
-  document
-    .querySelector('#determineSubButton')
-    .addEventListener('click', () => {
-      window.location.hash = '#result'
+    styleHolder.innerHTML = '<link rel="stylesheet" href="./Stylesheets/menuStyle.css"></link>'
+    main.innerHTML = menu
+    document.querySelector('.logoutBtn').addEventListener('click', logout)
+    document.querySelector('#editProfileButton').addEventListener('click', () => {
+        window.location.hash = '#form'
     })
+    document
+        .querySelector('#determineSubButton')
+        .addEventListener('click', () => {
+            window.location.hash = '#result'
+        })
 
-  const isAdmin = await isUserAdmin()
+    const isAdmin = await isUserAdmin()
 
-  if (isAdmin) {
-    document.querySelector('.infoMenuTitle').textContent = 'Willkommen Admin'
-    const actionCardDiv = document.createElement('div')
-    actionCardDiv.className = 'flexbox actionCardDiv'
-    actionCardDiv.innerHTML = `
+    if (isAdmin) {
+        document.querySelector('.infoMenuTitle').textContent = 'Willkommen Admin'
+        const actionCardDiv = document.createElement('div')
+        actionCardDiv.className = 'flexbox actionCardDiv'
+        actionCardDiv.innerHTML = `
       <a id="editOffersButton"><div class="flexbox actionTitle">Angebote bearbeiten</div>
       <div class="flexbox actionDescr">
         <p class="flexbox actionDescrText">Bearbeiten Sie die Angebotsauswahl für die Berechnung der Empfehlung.</p>
       </div></a>
     `
 
-    const actionsDiv = document.querySelector('.actionsDiv')
-    actionsDiv.insertAdjacentElement('afterbegin', actionCardDiv)
+        const actionsDiv = document.querySelector('.actionsDiv')
+        actionsDiv.insertAdjacentElement('afterbegin', actionCardDiv)
 
-    document
-      .querySelector('#editOffersButton')
-      .addEventListener('click', () => {
-        window.location.hash = '#offer'
-      })
-  }
+        document
+            .querySelector('#editOffersButton')
+            .addEventListener('click', () => {
+                window.location.hash = '#offer'
+            })
+    }
 }
 
 const styleHolder = document.getElementById('styleHolder')
