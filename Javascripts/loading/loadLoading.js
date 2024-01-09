@@ -1,6 +1,7 @@
 export function loadLoading() {
-  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/loadingStyle.css"></link>`
-  main.innerHTML = loading
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/loadingStyle.css"></link>'
+    main.innerHTML = loading
 }
 
 const styleHolder = document.getElementById('styleHolder')

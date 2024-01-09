@@ -1,20 +1,21 @@
 import {
-  isUserAdmin,
-  checkIfUserIsLoggedIn,
+    isUserAdmin,
+    checkIfUserIsLoggedIn,
 } from '../functions/generalFunctions.js'
 
 const main = document.querySelector('main')
 
 export async function loadAdd() {
-  const isUserLoggedIn = await checkIfUserIsLoggedIn()
-  if (!isUserLoggedIn) return (window.location.hash = '#login')
-  const isAdmin = await isUserAdmin()
-  if (!isAdmin) return (window.location.hash = '#menu')
+    const isUserLoggedIn = await checkIfUserIsLoggedIn()
+    if (!isUserLoggedIn) return (window.location.hash = '#login')
+    const isAdmin = await isUserAdmin()
+    if (!isAdmin) return (window.location.hash = '#menu')
 
-  const styleHolder = document.getElementById('styleHolder')
-  styleHolder.innerHTML = `<link rel="stylesheet" href="./Stylesheets/detailViewStyle.css"></link>`
+    const styleHolder = document.getElementById('styleHolder')
+    styleHolder.innerHTML =
+        '<link rel="stylesheet" href="./Stylesheets/detailViewStyle.css"></link>'
 
-  main.innerHTML = `<div class="flexbox mainHeader">
+    main.innerHTML = `<div class="flexbox mainHeader">
       <a class="flexbox btn cancelBtn">Cancel</a>
       </div>
       <p class="flexbox formTitle">Bearbeiten</p>
@@ -97,123 +98,126 @@ export async function loadAdd() {
       <a class="flexbox btn saveBtn">Speichern</a>
       </div>`
 
-  const inputFields = document.querySelectorAll('.infoInput')
-  const errorMessageContainer = document.querySelector('#errorMessageContainer')
-  const errorMessage = document.createElement('p')
-  errorMessage.classList.add('errorMessage')
-  errorMessage.textContent = 'Bitte füllen Sie alle Felder aus.'
-  errorMessageContainer.appendChild(errorMessage)
+    const inputFields = document.querySelectorAll('.infoInput')
+    const errorMessageContainer = document.querySelector(
+        '#errorMessageContainer',
+    )
+    const errorMessage = document.createElement('p')
+    errorMessage.classList.add('errorMessage')
+    errorMessage.textContent = 'Bitte füllen Sie alle Felder aus.'
+    errorMessageContainer.appendChild(errorMessage)
 
-  document.querySelector('.saveBtn').addEventListener('click', () => {
-    let emptyFields = false
-    inputFields.forEach((field) => {
-      if (field.value === '') {
-        emptyFields = true
-      }
+    document.querySelector('.saveBtn').addEventListener('click', () => {
+        let emptyFields = false
+        inputFields.forEach((field) => {
+            if (field.value === '') {
+                emptyFields = true
+            }
+        })
+        if (emptyFields) {
+            errorMessageContainer.style.display = 'flex'
+        } else {
+            errorMessageContainer.style.display = 'none'
+            numberFields.forEach((field) => {
+                field.value = Math.round(field.value * 20) / 20
+            })
+            saveOffer()
+        }
     })
-    if (emptyFields) {
-      errorMessageContainer.style.display = 'flex'
-    } else {
-      errorMessageContainer.style.display = 'none'
-      numberFields.forEach((field) => {
-        field.value = Math.round(field.value * 20) / 20
-      })
-      saveOffer()
-    }
-  })
 
-  const cancelBtn = document.querySelector('.cancelBtn')
-  cancelBtn.addEventListener('click', () => {
-    main.innerHTML = ''
-    window.location.hash = '#offer'
-  })
-
-  const numberFields = document.querySelectorAll('.number')
-
-  numberFields.forEach((field) => {
-    field.addEventListener('input', () => {
-      field.value = field.value
-        .replace(/[^0-9.]/g, '')
-        .replace(/(\..*)\./g, '$1')
+    const cancelBtn = document.querySelector('.cancelBtn')
+    cancelBtn.addEventListener('click', () => {
+        main.innerHTML = ''
+        window.location.hash = '#offer'
     })
-  })
+
+    const numberFields = document.querySelectorAll('.number')
+
+    numberFields.forEach((field) => {
+        field.addEventListener('input', () => {
+            field.value = field.value
+                .replace(/[^0-9.]/g, '')
+                .replace(/(\..*)\./g, '$1')
+        })
+    })
 }
 
 async function saveOffer(offerId) {
-  const main = document.querySelector('main')
-  const name = document.getElementById('name').value
-  const provider = document.getElementById('provider').value
-  const offerUrl = document.getElementById('offerUrl').value
-  const basePrice = document.getElementById('basePrice').value
-  const worldOffer = document.getElementById('worldOffer').checked
-  const callPerCallminuteCH = document.getElementById(
-    'callPerCallminuteCH'
-  ).value
-  const internetPerGBCH = document.getElementById('internetPerGBCH').value
-  const smsPerCountCH = document.getElementById('smsPerCountCH').value
-  const callPerCallminuteEurope = document.getElementById(
-    'callPerCallminuteEurope'
-  ).value
-  const internetPerGBEurope = document.getElementById(
-    'internetPerGBEurope'
-  ).value
-  const smsPerCountEurope = document.getElementById('smsPerCountEurope').value
-  const freeGBInternetCH = document.getElementById('freeGBInternetCH').value
-  const freeCallminutesCH = document.getElementById('freeCallminutesCH').value
-  const freeSMSCH = document.getElementById('freeSMSCH').value
-  const freeGBInternetEurope = document.getElementById(
-    'freeGBInternetEurope'
-  ).value
-  const freeCallminutesEurope = document.getElementById(
-    'freeCallminutesEurope'
-  ).value
-  const freeSMSEurope = document.getElementById('freeSMSEurope').value
-  const activationFee = document.getElementById('activationFee').value
+    const main = document.querySelector('main')
+    const name = document.getElementById('name').value
+    const provider = document.getElementById('provider').value
+    const offerUrl = document.getElementById('offerUrl').value
+    const basePrice = document.getElementById('basePrice').value
+    const worldOffer = document.getElementById('worldOffer').checked
+    const callPerCallminuteCH = document.getElementById(
+        'callPerCallminuteCH',
+    ).value
+    const internetPerGBCH = document.getElementById('internetPerGBCH').value
+    const smsPerCountCH = document.getElementById('smsPerCountCH').value
+    const callPerCallminuteEurope = document.getElementById(
+        'callPerCallminuteEurope',
+    ).value
+    const internetPerGBEurope = document.getElementById(
+        'internetPerGBEurope',
+    ).value
+    const smsPerCountEurope = document.getElementById('smsPerCountEurope').value
+    const freeGBInternetCH = document.getElementById('freeGBInternetCH').value
+    const freeCallminutesCH = document.getElementById('freeCallminutesCH').value
+    const freeSMSCH = document.getElementById('freeSMSCH').value
+    const freeGBInternetEurope = document.getElementById(
+        'freeGBInternetEurope',
+    ).value
+    const freeCallminutesEurope = document.getElementById(
+        'freeCallminutesEurope',
+    ).value
+    const freeSMSEurope = document.getElementById('freeSMSEurope').value
+    const activationFee = document.getElementById('activationFee').value
 
-  const offer = {
-    offerId: offerId,
-    name: name,
-    provider: provider,
-    offerUrl: offerUrl,
-    basePrice: basePrice,
-    worldOffer: worldOffer,
-    cost: {
-      callPerCallminuteCH: callPerCallminuteCH,
-      internetPerGBCH: internetPerGBCH,
-      smsPerCountCH: smsPerCountCH,
-      callPerCallminuteEurope: callPerCallminuteEurope,
-      internetPerGBEurope: internetPerGBEurope,
-      smsPerCountEurope: smsPerCountEurope,
-    },
-    deductions: {
-      freeGBInternetCH: freeGBInternetCH,
-      freeCallminutesCH: freeCallminutesCH,
-      freeSMSCH: freeSMSCH,
-      freeGBInternetEurope: freeGBInternetEurope,
-      freeCallminutesEurope: freeCallminutesEurope,
-      freeSMSEurope: freeSMSEurope,
-    },
-    activationFee: activationFee,
-  }
-  const saveOfferURL = `https://handy-tarifvergleich-server.azurewebsites.net/offers/add`
-  try {
-    const response = await fetch(saveOfferURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-      },
-      body: JSON.stringify(offer),
-    })
-    if (response.ok) {
-      import('../../app.js').then((module) => {
-        module.getAllRoutes()
-      })
-      sessionStorage.setItem('reload', 'true')
-      main.innerHTML = ''
-      window.location.hash = '#offer'
+    const offer = {
+        offerId: offerId,
+        name: name,
+        provider: provider,
+        offerUrl: offerUrl,
+        basePrice: basePrice,
+        worldOffer: worldOffer,
+        cost: {
+            callPerCallminuteCH: callPerCallminuteCH,
+            internetPerGBCH: internetPerGBCH,
+            smsPerCountCH: smsPerCountCH,
+            callPerCallminuteEurope: callPerCallminuteEurope,
+            internetPerGBEurope: internetPerGBEurope,
+            smsPerCountEurope: smsPerCountEurope,
+        },
+        deductions: {
+            freeGBInternetCH: freeGBInternetCH,
+            freeCallminutesCH: freeCallminutesCH,
+            freeSMSCH: freeSMSCH,
+            freeGBInternetEurope: freeGBInternetEurope,
+            freeCallminutesEurope: freeCallminutesEurope,
+            freeSMSEurope: freeSMSEurope,
+        },
+        activationFee: activationFee,
     }
-  } catch (err) {
-    console.error(err)
-  }
+    const saveOfferURL =
+        'https://handy-tarifvergleich-server.azurewebsites.net/offers/add'
+    try {
+        const response = await fetch(saveOfferURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+            },
+            body: JSON.stringify(offer),
+        })
+        if (response.ok) {
+            import('../../app.js').then((module) => {
+                module.getAllRoutes()
+            })
+            sessionStorage.setItem('reload', 'true')
+            main.innerHTML = ''
+            window.location.hash = '#offer'
+        }
+    } catch (err) {
+        console.error(err)
+    }
 }
